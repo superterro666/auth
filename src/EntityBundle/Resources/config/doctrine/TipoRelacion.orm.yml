@@ -13,8 +13,5 @@ EntityBundle\Entity\TipoRelacion:
             type: string
             length: 255
     
-    oneToMany:
-        relacion:
-            targetEntity: Relacion
-            mappedBy: tipo_relacion
+  
     lifecycleCallbacks: {  }

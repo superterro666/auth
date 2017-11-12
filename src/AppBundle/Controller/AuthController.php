@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Services\JwtAuthService;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use AppBundle\Services\ErrorsService;
@@ -21,8 +22,8 @@ class AuthController extends Controller {
         if ($user || $password) {
             $em = $this->getDoctrine()->getManager();
             try {
-                $user = $em->getRepository('EntityBundle:User')->findOneBy(array('username' => $user));
-
+                $user = $em->getRepository('EntityBundle:User')->findOneBy(array('username' => $user, 'status'=>1));
+               
                 if ($user) {
    
                     //  $password_hash = password_hash('12345', PASSWORD_BCRYPT, array('cost' => 4));
@@ -30,12 +31,12 @@ class AuthController extends Controller {
                     $iguales = password_verify($password, $user->getPassword());
                     
                    
-                    var_dump($user->getRole());
+       
 
                     if ($iguales) {
                         
                            $response =   $jwt->signup($user);
-                            return new JsonResponse($user->getRole()->getRole()->getId());
+                            return new JsonResponse($user->getRole()->getRole());
                        
                     } else {
                         
@@ -53,5 +54,12 @@ class AuthController extends Controller {
 
          return new JsonResponse($error->dataError(2));
     }
+    
+    
+    public function testAction(){
+            $em = $this->getDoctrine()->getManager();
+            $use = $em->getRepository("EntityBundle:User")->findOneBy(array('username'=>'admin','status'=>1));
+            return new Response($use);
+            }
 
 }

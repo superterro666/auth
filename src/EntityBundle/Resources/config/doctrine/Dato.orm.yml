@@ -29,7 +29,7 @@ EntityBundle\Entity\Dato:
     oneToOne:
         user:
             targetEntity: User
-            inverserdBy: dato
+            inversedBy: dato
             joinColumn:
                 name: id_user
                 referencedColumnName: id

@@ -7,3 +7,7 @@ login:
     path: /login
     defaults: { _controller: AppBundle:Auth:auth }
     methods: [POST]
+    
+pruebas:
+    path: /test
+    defaults: { _controller: AppBundle:Auth:test }

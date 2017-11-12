@@ -38,9 +38,7 @@ EntityBundle\Entity\User:
             targetEntity: Contacto
             mappedBy: user
             
-        relacion:
-            targetEntity: Relacion
-            mappedBy: user
+        
             
         dato_bancario:
             targetEntity: DatoBancario
