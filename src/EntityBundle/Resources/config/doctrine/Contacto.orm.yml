@@ -1,0 +1,31 @@
+EntityBundle\Entity\Contacto:
+    type: entity
+    table: contactos
+    repositoryClass: EntityBundle\Repository\ContactoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        dato:
+            type: string
+            length: '100'
+            
+    manyToOne:
+        user:
+            targetEntity: User
+            inversedBy: contacto
+            joinColumn:
+                name: id_user
+                referencedColumnName: id
+                
+        tipo_contacto:
+            targetEntity: TipoContacto
+            inversedBy: contacto
+            joinColumn:
+                name: id_tipo
+                referencedColumnName: id
+        
+    lifecycleCallbacks: {  }

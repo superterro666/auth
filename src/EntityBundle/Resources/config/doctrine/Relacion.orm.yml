@@ -1,0 +1,34 @@
+EntityBundle\Entity\Relacion:
+    type: entity
+    table: relaciones
+    repositoryClass: EntityBundle\Repository\RelacionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    
+    manyToOne:
+        user_a:
+            targetEntity: User
+            inversedBy: relacion
+            joinColumn:
+                name: id_user_a
+                referencedColumnName: id
+        
+        user_b:
+            targetEntity: User
+            inversedBy: relacion
+            joinColumn:
+                name: id_user_b
+                referencedColumnName: id
+        
+        tipo_relacion:
+            targetEntity: TipoRelacion
+            inversedBy: relacion
+            joinColumn:
+                name: id_tipo
+                referencedColumnName: id
+                
+    lifecycleCallbacks: {  }

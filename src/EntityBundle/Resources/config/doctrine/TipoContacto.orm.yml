@@ -1,0 +1,21 @@
+EntityBundle\Entity\TipoContacto:
+    type: entity
+    table: tipo_contactos
+    repositoryClass: EntityBundle\Repository\TipoContactoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        tipo:
+            type: string
+            length: '100'
+            
+    oneToMany:
+        contacto:
+            targetEntity: Contacto
+            mappedBy: tipo_contacto
+        
+    lifecycleCallbacks: {  }

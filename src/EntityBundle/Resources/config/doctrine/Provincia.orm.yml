@@ -1,0 +1,19 @@
+EntityBundle\Entity\Provincia:
+    type: entity
+    table: provincias
+    repositoryClass: EntityBundle\Repository\ProvinciaRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        provincia:
+            type: string
+            length: 255
+    oneToMany:
+        municipio:
+            targetEntity: Municipio
+            mappedBy: provincia
+    lifecycleCallbacks: {  }

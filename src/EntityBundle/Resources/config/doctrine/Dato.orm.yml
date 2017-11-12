@@ -1,0 +1,47 @@
+EntityBundle\Entity\Dato:
+    type: entity
+    table: datos
+    repositoryClass: EntityBundle\Repository\DatoRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nombre:
+            type: string
+            length: '100'
+        apellidos:
+            type: string
+            length: 255
+        fechaNacimiento:
+            type: datetime
+            column: fecha_nacimiento
+        direccion:
+            type: string
+            length: 255
+        dni:
+            type: string
+            length: '12'
+            nullable: true
+            
+    oneToOne:
+        user:
+            targetEntity: User
+            inverserdBy: dato
+            joinColumn:
+                name: id_user
+                referencedColumnName: id
+                
+        
+    manyToOne:
+        municipio:
+            targetEntity: Municipio
+            inversedBy: dato
+            joinColumn:
+                name: id_municipio
+                referencedColumnName: id
+        
+                
+    lifecycleCallbacks: {  }

@@ -1,0 +1,24 @@
+EntityBundle\Entity\DatoBancario:
+    type: entity
+    table: datos_bancarios
+    repositoryClass: EntityBundle\Repository\DatoBancarioRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        dato:
+            type: string
+            length: 255
+            
+    manyToOne:
+        user:
+            targetEntity: User
+            inversedBy: dato_bancario
+            joinColumn:
+                name: id_user
+                referencedColumName: id
+            
+    lifecycleCallbacks: {  }

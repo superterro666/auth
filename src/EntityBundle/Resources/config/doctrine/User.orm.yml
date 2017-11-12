@@ -1,0 +1,59 @@
+EntityBundle\Entity\User:
+    type: entity
+    table: users
+    repositoryClass: EntityBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        username:
+            type: string
+            length: 255
+            unique: true
+        password:
+            type: string
+            length: 255
+        sha:
+            type: string
+            length: 255
+        fecha:
+            type: datetime
+        status:
+            type: boolean
+        
+        img:
+            type: string
+            length: 255
+            
+    oneToOne:
+        dato:
+            targetEntity: Dato
+            mappedBy: user
+            
+    oneToMany:
+        contacto:
+            targetEntity: Contacto
+            mappedBy: user
+            
+        relacion:
+            targetEntity: Relacion
+            mappedBy: user
+            
+        dato_bancario:
+            targetEntity: DatoBancario
+            mappedBy: user
+            
+        
+            
+    manyToOne:
+        role:
+            targetEntity: Role
+            inversedBy: user
+            joinColumn:
+                name: id_role
+                referencedColumnName: id
+            
+    lifecycleCallbacks: {  }

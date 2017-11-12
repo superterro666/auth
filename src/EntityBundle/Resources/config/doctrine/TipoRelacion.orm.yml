@@ -1,0 +1,20 @@
+EntityBundle\Entity\TipoRelacion:
+    type: entity
+    table: tipo_relaciones
+    repositoryClass: EntityBundle\Repository\TipoRelacionRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        tipo:
+            type: string
+            length: 255
+    
+    oneToMany:
+        relacion:
+            targetEntity: Relacion
+            mappedBy: tipo_relacion
+    lifecycleCallbacks: {  }

@@ -1,0 +1,25 @@
+EntityBundle\Entity\UsuarioCentro:
+    type: entity
+    table: usuarios_centros
+    repositoryClass: EntityBundle\Repository\UsuarioCentroRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        user:
+            targetEntity: User
+            inversedBy: usuario_centro
+            joinColumn:
+                name: id_user
+                referencedColumnName: id
+        centro:
+            targetEntity: Centro
+            inversedBy: usuario_centro
+            joinColumn:
+                name: id_centro
+                referencedColumnName: id
+                
+    lifecycleCallbacks: {  }

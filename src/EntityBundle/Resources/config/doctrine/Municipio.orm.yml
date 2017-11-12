@@ -1,0 +1,28 @@
+EntityBundle\Entity\Municipio:
+    type: entity
+    table: municipios
+    repositoryClass: EntityBundle\Repository\MunicipioRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        municipio:
+            type: string
+            length: 255
+            
+    manyToOne:
+        provincia:
+            targetEntity: Provincia
+            inversedBy: municipio
+            joinColumn:
+                name: id_provincia
+                referencedColumnName: id
+    oneToMany:
+        dato:
+            targetEntity: Dato
+            mappedBy: municipio
+        
+    lifecycleCallbacks: {  }
